@@ -1,0 +1,15 @@
+Ideas for extra features:
+
+- Add more pokemon to the pokemon.js file
+- Add a "Run Away" button
+- Create a stylish healthbar
+- Add CSS battle animations
+- Record the total number of wins and losses
+
+- Attack damage is randomly selected between a range of numbers ie. 10 - 15 damage. 
+- Attack damage based on a hit/dam dice system ie. Hit 5 / Dam 3 would be 5 rolls of a 3 sided dice
+- Add healing potions
+- Use pokeballs to "catch" the Pokemon
+
+- Allow the Player and CPU to choose between multiple attacks
+- Incorporate different pokemon "types" ie. Grass is weak to Fire, Fire is weak to water, etc...
