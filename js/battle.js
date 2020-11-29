@@ -3,7 +3,13 @@
     keep in mind that cookie data is stored as a string - be sure to use Number() if passing integers
     and JSON.parse if passing JSON as cookie data.
 */
-
+/*
+    - Use selectors to target and fill in the img, .name, and .health elements on battle.html
+    - Display the .battlelog contents
+    - If the battle is over, present the user with a button to go back to index.html to start a new round
+      and also wipe the cookies. 
+    - Otherwise, present the user with a button to refresh the page and complete the next battle sequence.
+*/
 
 let cpuPokemon = JSON.parse(Cookies.get('cpuPokemon'));
 
@@ -13,8 +19,7 @@ let cpuPokemonAttack = cpuPokemon['attack'];
 let cpuPokemonImage = cpuPokemon['image'];
 
 // computers pokemon
-let cpuImage = document.querySelector('.cpu img');
-cpuImage.innerHTML = cpuPokemonImage;
+let cpuImage = document.querySelector('.cpu img').src = cpuPokemonImage;
 console.log(cpuImage);
 
 let cpuName = document.querySelector('.cpu h3');
@@ -33,8 +38,8 @@ let myPokemonHP = myPokemon['hp'];
 let myPokemonAttack = myPokemon['attack'];
 let myPokemonImage = myPokemon['image'];
 
-let myImage = document.querySelector('.player img');
-myImage.innerHTML = myPokemonImage;
+let myImage = document.querySelector('.player img').src = myPokemonImage;
+
 console.log(myImage);
 
 let myName = document.querySelector('.player h3');
@@ -61,13 +66,7 @@ console.log(myPokemon);
 */
 
 
-/*
-    - Use selectors to target and fill in the img, .name, and .health elements on battle.html
-    - Display the .battlelog contents
-    - If the battle is over, present the user with a button to go back to index.html to start a new round
-      and also wipe the cookies. 
-    - Otherwise, present the user with a button to refresh the page and complete the next battle sequence.
-*/
+
 
    
 
