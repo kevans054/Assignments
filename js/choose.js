@@ -1,29 +1,6 @@
-function startGame(index) {
-    console.log(index);
-
-    let CPU = Math.round(Math.random() * 2);
-    console.log('Computer chose ' + CPU);
-
-    //if CPU chooses the same as player choose again.
-    if (index == CPU) {
-        let CPU = Math.round(Math.random() * 2);
-        Cookies.set('CPU', CPU);
-        console.log('new CPU choice is ' + CPU);
-    } else {
-        Cookies.set('CPU', CPU);
-    }
-
-    for (var i = 0; i < pokemon.length; i++) {
-        if (index == i) {
-            let playerschoice = JSON.stringify(pokemon[i]);
-            Cookies.set('playersChoice', playerschoice);
-
-            console.log('players choice is ' + playerschoice);
-        };
-
-    };
-
-};
+//Pokemon Battle
+//Karen Evans
+//November 28, 2020
 
 /*
     - Randomly select a pokemon for the CPU (https://www.w3schools.com/js/js_random.asp)
@@ -35,13 +12,42 @@ function startGame(index) {
         - Hint: all of this information can be passed in a single cookie
     - Redirect the user to the battle page (https://www.w3schools.com/howto/howto_js_redirect_webpage.asp)
 */
-// }
+
+function startGame(index) {
+    console.log(index);
+    let myPokemon = JSON.stringify(pokemon[index]);
+    // console.log('you chose ' + myPokemon);
+    Cookies.set('myPokemon', myPokemon);
+    
+
+    let cpuIndex = Math.round(Math.random() * 2);
+    let cpuPokemon = JSON.stringify(pokemon[cpuIndex]);
+    Cookies.set('cpuPokemon', cpuPokemon);
+
+ 
+    window.location.href = 'battle.html';
+
+    //if cpu chooses the same as player choose again.
+    // if (index == cpu) {
+    //     let cpuPokemon = Math.round(Math.random() * 2);
+    //     console.log('new CPU choice is ' + cpuPokemon);
+    // } else {
+    //     // let cpu = Math.round(Math.random() * 2);
+    //     let cpuPokemonName = (pokemon[index]['name']);
+    //     let cpuPokemonHP = pokemon[index]['HP'];
+    //     console.log(cpuPokemonName);
+    //     // , ['HP'], ['attack'], ['image']
+    //     Cookies.set('cpuPokemonName', cpuPokemonName);
+    //     // Cookies.set('cpuPokemon', cpuPokemon);
+    // }
+    // // console.log(pokemon[index]['name']);
+
+};
+
+
 
 // Map function to create a choice button for each Pokemon in the list
 pokemon.map(function (choice, index) {
-
-    console.log(choice + index);
-
 
     // create a div in memory with the image, name and basic stats
     let div = document.createElement('div');

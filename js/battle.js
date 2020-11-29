@@ -5,6 +5,50 @@
 */
 
 
+let cpuPokemon = JSON.parse(Cookies.get('cpuPokemon'));
+
+let cpuPokemonName = cpuPokemon['name'];
+let cpuPokemonHP = cpuPokemon['hp'];
+let cpuPokemonAttack = cpuPokemon['attack'];
+let cpuPokemonImage = cpuPokemon['image'];
+
+// computers pokemon
+let cpuImage = document.querySelector('.cpu img');
+cpuImage.innerHTML = cpuPokemonImage;
+console.log(cpuImage);
+
+let cpuName = document.querySelector('.cpu h3');
+cpuName.innerHTML = cpuPokemonName;
+console.log(cpuName);
+
+let cpuHP = document.querySelector('.cpu .health');
+cpuHP.innerHTML = cpuPokemonHP;
+console.log(cpuHP);
+// players pokemon
+
+let myPokemon = JSON.parse(Cookies.get('myPokemon'));
+
+let myPokemonName = myPokemon['name'];
+let myPokemonHP = myPokemon['hp'];
+let myPokemonAttack = myPokemon['attack'];
+let myPokemonImage = myPokemon['image'];
+
+let myImage = document.querySelector('.player img');
+myImage.innerHTML = myPokemonImage;
+console.log(myImage);
+
+let myName = document.querySelector('.player h3');
+myName.innerHTML = myPokemonName;
+console.log(myName);
+
+let myHP = document.querySelector('.player .health');
+myHP.innerHTML = myPokemonHP;
+console.log(myHP);
+
+// let myPokemon = Cookies.get(myPokemon);
+console.log(myPokemon['name']);
+console.log(myPokemon);
+
 /*    
     Deal with your "battle sequence" by:
         - Subtracting player attack damage from the CPU's health.
@@ -25,15 +69,5 @@
     - Otherwise, present the user with a button to refresh the page and complete the next battle sequence.
 */
 
+   
 
-function playRound(guess) {
-    var possibilities = guess;
-    gameCount++;
-    console.log('Number of games is ' + gameCount);
-    // Math.floor rounds any decimal number down to the whole number
-    // Math.random() returns a floating-point, pseudo-random number in the range 0 to less than 1 (inclusive of 0, but not 1) 
-    // Math.round method rounds a number to the nearest integer.
-    var cointoss = Math.round(Math.random())
-    var resultString = 'The coin came up ' + possibilities[cointoss];
-    resultText.innerText = resultString;
-}
