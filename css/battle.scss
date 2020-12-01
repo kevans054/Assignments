@@ -1,10 +1,14 @@
 .logo{
 
-    // text-align: center;
-    // font-size: 3rem;
     background-image: url(../images/pokemonlogo.png);
     background-repeat: no-repeat;
     background-position: center;
+}
+
+.scoreboard {
+
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
 }
 
 .battle {

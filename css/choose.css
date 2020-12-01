@@ -1,6 +1,13 @@
+.logo {
+  background-image: url(../images/pokemonlogo.png);
+  background-repeat: no-repeat;
+  background-position: bottom;
+}
+
 .choose-pokemon {
   display: -ms-grid;
   display: grid;
+  padding-bottom: 200px;
   grid-gap: 2rem;
 }
 

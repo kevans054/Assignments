@@ -13,17 +13,30 @@
     - Redirect the user to the battle page (https://www.w3schools.com/howto/howto_js_redirect_webpage.asp)
 */
 
+Cookies.get('scoreCookie');
+Cookies.get('myScore');
+Cookies.get('cpuScore');
+Cookies.get('mygameWins');
+Cookies.get('cpugameWins');
+Cookies.get('mygameLosses');
+Cookies.get('cpugameLosses');
+
+
+let title = document.createElement('header');
+let titleElement = document.querySelector('body');
+titleElement.prepend(title);
+titleElement.classList.add("logo");
 
 function startGame(index) {
     console.log(index);
     let myPokemon = JSON.stringify(pokemon[index]);
     Cookies.set('myPokemon', myPokemon);
-    
+
 
     let cpuIndex = Math.round(Math.random() * 2);
     let cpuPokemon = JSON.stringify(pokemon[cpuIndex]);
     console.log(cpuPokemon);
-   
+
     Cookies.set('cpuPokemon', cpuPokemon);
     window.location.href = 'battle.html';
 };

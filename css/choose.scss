@@ -1,6 +1,14 @@
 
+ .logo{
+    background-image: url(../images/pokemonlogo.png);
+    background-repeat: no-repeat;
+    background-position: bottom;
+    // padding-top: 200px;
+
+} 
 .choose-pokemon {
     display: grid;
+    padding-bottom: 200px;
     grid-gap: 2rem;
 
     > div {
@@ -16,6 +24,8 @@
             height: 200px;
         }
     }
+
+    
 }
 
 
