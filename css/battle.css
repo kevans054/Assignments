@@ -1,3 +1,9 @@
+.logo {
+  background-image: url(../images/pokemonlogo.png);
+  background-repeat: no-repeat;
+  background-position: center;
+}
+
 .battle {
   display: -ms-grid;
   display: grid;
