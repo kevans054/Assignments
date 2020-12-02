@@ -14,7 +14,7 @@ const pokemon = [
     },
     {
         name: 'Bulbasaur',
-        hp: 120,
+        hp: 200,
         attack: 18,
         image: 'https://static.wikia.nocookie.net/pokemon/images/2/21/001Bulbasaur.png'
     }

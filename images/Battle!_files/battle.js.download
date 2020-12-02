@@ -1,7 +1,3 @@
-//Pokemon Battle
-//Karen Evans
-//November 28, 2020
-
 /*
     Start by collecting your game data from your cookie(s) and assigning it to variable(s)...
     keep in mind that cookie data is stored as a string - be sure to use Number() if passing integers
@@ -14,7 +10,8 @@
       and also wipe the cookies. 
     - Otherwise, present the user with a button to refresh the page and complete the next battle sequence.
 */
-// let scoreCookie = Cookies.get('scoreCookie');
+let scoreCookie = Cookies.get('scoreCookie');
+// let myScore = Cookies.get('myScore');
 let cpuScore = Cookies.get('cpuScore');
 let mygameWins = Cookies.get('mygameWins') || 0;
 let cpugameWins = Cookies.get('cpugameWins') || 0;
@@ -78,7 +75,7 @@ myAttack.innerText = 'Atk: ' + myPokemonAttack;
 */
 
 
-//Logo
+// Battle
 
 let title = document.createElement('header');
 let titleElement = document.querySelector('body');
@@ -93,10 +90,12 @@ let scoreboardElement = document.querySelector('div');
 scoreboardElement.appendChild(statusbarElement);
 
 
-// scoreboard
+
 function upDateScoreBoard(thewinner) {
+
     if (thewinner == 'player') {
         statusbarElement.innerText = ('Current Score:  ' + 'Player:' + '   ' + mygameWins + '        ' + 'Computer:' + '   ' + cpugameWins + '   ');
+        // console.log('scoreboard if');
     } else if (thewinner == 'cpu') {
         statusbarElement.innerText = ('Current Score:  ' + 'Player:' + '   ' + mygameWins + '        ' + 'Computer:' + '   ' + cpugameWins + '   ');
     } else {
@@ -109,19 +108,23 @@ let battleBtn = document.querySelector('.game-button').innerHTML = 'Battle';
 battleBtn = document.querySelector('.game-button').addEventListener('click', function () {
 
     if (cpuPokemonHP > 0 && myPokemonHP > 0) {
+
         cpuDamage = (cpuPokemonHP - myPokemonAttack);
+        console.log(cpuDamage);
         cpuPokemonHP = cpuDamage;
         cpuHP.innerHTML = cpuDamage;
 
 
         playerDamage = (myPokemonHP - cpuPokemonAttack);
+        console.log(playerDamage);
         myPokemonHP = playerDamage;
         myHP.innerHTML = playerDamage;
 
         gameCount++;
-        Battlelog(cpuPokemonName, cpuDamage, cpuPokemonAttack, myPokemonName, playerDamage, myPokemonAttack);
+        Battlelog(cpuPokemonName, cpuDamage, cpuAttack, myPokemonName, playerDamage, myPokemonAttack);
 
     } else if (myPokemonHP != 0 && cpuPokemonHP == 0) {
+        console.log('first else if');
         let playerWinMsg = document.createElement('h1');
         let playerWinNode = document.createTextNode("Winner");
         playerWinMsg.appendChild(playerWinNode);
@@ -131,6 +134,7 @@ battleBtn = document.querySelector('.game-button').addEventListener('click', fun
         Battles(winner);
 
     } else if (myPokemonHP == 0 && cpuPokemonHP != 0) {
+        console.log('second else if');
         let cpuWinMsg = document.createElement('h1');
         let cpuWinNode = document.createTextNode("Winner");
         cpuWinMsg.appendChild(cpuWinNode);
@@ -140,6 +144,7 @@ battleBtn = document.querySelector('.game-button').addEventListener('click', fun
         Battles(winner);
     }
     else {
+        console.log('draw');
         winner = 'draw';
         Battles(winner);
         upDateScoreBoard(winner);
@@ -148,6 +153,9 @@ battleBtn = document.querySelector('.game-button').addEventListener('click', fun
 
 
 function Battlelog(cpuPokemonName, cpuDamage, cpuAttack, myPokemonName, playerDamage, myPokemonAttack) {
+    console.log('inside the battlelog function');
+    //    let attacks = cpuPokemonName, cpuDamage, myPokemonName, playerDamage;
+
     let index = 0;
     const attack = [];
     attack[index] = {
@@ -158,6 +166,7 @@ function Battlelog(cpuPokemonName, cpuDamage, cpuAttack, myPokemonName, playerDa
         myHealth: playerDamage,
         myAttack: myPokemonAttack
     }
+    // attack.fill(cpuPokemonName, cpuDamage, myPokemonName, playerDamage);
     index++;
 
     for (let i = 0; i < attack.length; i++) {
@@ -165,9 +174,10 @@ function Battlelog(cpuPokemonName, cpuDamage, cpuAttack, myPokemonName, playerDa
         let listItem = document.createElement('li');
         let battleNode = document.querySelector('.battlelog');
         battleNode.appendChild(listItem);
-        listItem.innerText = (attack[i].cpuPokemon + ' attack: ' + attack[i].CpuAttack + ' Damage to: ' + attack[i].myPokemon + ': ' + "" + attack[i].myHealth + '\n'
-            + attack[i].myPokemon + ' attack: ' + attack[i].myAttack + ' Damage to: ' + attack[i].cpuPokemon + ': ' + attack[i].cpuHealth);
+        listItem.innerText = (attack[i].cpuPokemon + '' + attack[i].CpuAttack + '       ' + attack[i].myPokemon + '' + attack[i].myAttack);
+
     }
+        // console.log(attack[i]);
 }
 
 
@@ -183,18 +193,18 @@ function Battles(winner) {
         Cookies.set('cpugameLosses', cpugameLosses);
         upDateScoreBoard(thewinner);
 
-
-    } else if (thewinner == 'cpu') {
+        console.log(winner);
+        // console.log(myScore);
+        // console.log(cpuScore);
+    } else {
 
         cpugameWins++;
         Cookies.set('cpugameWins', cpugameWins);
         mygameLosses++;
         Cookies.set('mygameLosses', mygameLosses);
         upDateScoreBoard(thewinner);
-    } else {
-
-        upDateScoreBoard(thewinner);
     }
+
 };
 
 
@@ -225,7 +235,7 @@ selectNewBtn.addEventListener('click', function () {
 
 });
 
-//create reset button
+
 let resetButton = document.createElement('button');
 let footer = document.querySelector('footer');
 footer.appendChild(resetButton);
@@ -241,7 +251,7 @@ resetButton.addEventListener('click', function () {
     console.log('removed cookies.');
 
     upDateScoreBoard();
-});
+})
 
 
 

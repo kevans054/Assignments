@@ -13,15 +13,6 @@
     - Redirect the user to the battle page (https://www.w3schools.com/howto/howto_js_redirect_webpage.asp)
 */
 
-Cookies.get('scoreCookie');
-Cookies.get('myScore');
-Cookies.get('cpuScore');
-Cookies.get('mygameWins');
-Cookies.get('cpugameWins');
-Cookies.get('mygameLosses');
-Cookies.get('cpugameLosses');
-
-
 let title = document.createElement('header');
 let titleElement = document.querySelector('body');
 titleElement.prepend(title);
